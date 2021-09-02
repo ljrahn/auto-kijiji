@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}Find Items{% endblock %} {% block
+body%}
+
+<form method="post" id="search-product-form"></form>
+
+<h2 align="center">Search for a Product</h3>
+<div class="form-group">
+  <label for="product">Product Name</label>
+  <input
+    type="text"
+    class="form-control"
+    id="product"
+    name="product"
+    placeholder="Enter Product to Search"
+    form="search-product-form"
+  />
+</div>
+<br>
+<label for="location">Location</label>
+<div class="form-group input-group mb-3">
+  <input 
+    type="text"
+    class="form-control"
+    id="location"
+    name="location"
+    placeholder="Enter Location"
+  />
+  <div class="input-group-append">
+    <button type="button" id="location-form" class="btn btn-dark">
+      Location Search
+    </button>
+  </div>
+</div>
+
+<div id='formatted-address'></div>
+<div id="address-components"></div>
+
+<br>
+
+<button type="submit" class="btn btn-dark" form="search-product-form">Submit</button>
+
+<br>
+
+<div class="mt-5" id="map"></div>
+
+
+
+<script
+src="https://unpkg.com/axios/dist/axios.min.js"
+></script>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE6q-p1V_4JPmbof8z0OKZ255VvfJQJeU&callback=initMap"
+></script>
+
+<script
+type="text/javascript"
+src="{{ url_for('static', filename='./js/find_items.js') }}"
+></script> 
+
+
+{% endblock %}

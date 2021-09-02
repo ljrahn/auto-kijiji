@@ -8,7 +8,6 @@ import logging
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 
-ROOT_DIR = get_project_root()
 logger = logging.getLogger(__name__)
 
 
@@ -23,8 +22,7 @@ class SeleniumUIActions:
     in seconds to wait for specific time"""
     def __init__(self, driver):
         self.driver = driver
-        config = get_config()
-        self.timeout_value = config['selenium']['timeout_value']
+        self.timeout_value = 10
 
     def wait_for_items_in_wrapper(self, wrapper=None, items=None, wait_time=True):
         """Waits for a list of text elements within a given xpath wrapper element.
@@ -178,9 +176,9 @@ class SeleniumUIActions:
 
             item = WebDriverWait(self.driver, float(wait_time)).until(
                 EC.element_to_be_clickable((locator, element)))
-            action = ActionChains(self.driver)
+            # action = ActionChains(self.driver)
             if clear_text:
-                action.double_click(item).perform()
+                item.send_keys(Keys.CONTROL + "a")
                 item.send_keys(Keys.DELETE)
 
             item.send_keys(keys)

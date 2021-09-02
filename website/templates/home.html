@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+
+<header class="">
+  <div class="container px-4 px-lg-5 text-center">
+    <h1 class="mb-1 mt-6">auto-kijiji</h1>
+    <h3 class="mb-5"><em>Find the best deals for products on kijiji</em></h3>
+    <a class="btn btn-dark btn-xl" href="/find-items">Find Items</a>
+  </div>
+</header>
+
+<script
+type="text/javascript"
+src="{{ url_for('static', filename='./js/home.js') }}"
+></script> 
+
+{% endblock %}
